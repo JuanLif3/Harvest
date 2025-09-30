@@ -1,0 +1,381 @@
+/*
+ * plans.css
+ * Estilos para la sección de comparación de planes.
+ * Versión final y optimizada.
+ */
+
+/* --- Contenedor Principal de la Comparación --- */
+#plans-comparison {
+    padding: 30px 0;
+    background-color: #a0512d00;
+}
+
+.plans-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; 
+}
+
+/* --- Estilos de la Tarjeta de Plan (Planes 1, 2, 3) --- */
+.plan-card {
+    background-color: #fff; 
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    width: 30%; 
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative; 
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Aseguramos que la altura se ajuste al contenido */
+    min-height: auto; 
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para el plan "Recomendado" */
+.plan-card.recommended {
+    border: 3px solid #007bff; 
+}
+
+.plan-card .tag {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #007bff; 
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Encabezado del Plan --- */
+.plan-header {
+    padding: 5px 15px 15px 15px; 
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.plan-header .titulo {
+    color: #28a745; 
+}
+
+.plan-header .price {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #28a745; 
+    margin-top: 15px; 
+    margin-bottom: 3px;
+}
+
+.plan-header .coverage {
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+/* --- Contenido y Características --- */
+.plan-content {
+    padding: 10px 15px; 
+    flex-grow: 1; 
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.plan-description {
+    min-height: 120px;
+    margin-bottom: 10px; 
+    font-size: 0.9em;
+    line-height: 1.3;
+    color: #555;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #e0e0e0;
+    flex-grow: 1;
+    text-align: left; 
+    width: 100%;
+}
+
+.plan-features li {
+    padding: 23px 2px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* --- Iconos y Colores de los Ticks --- */
+.tick {
+    color: #28a745; 
+    font-weight: bold;
+}
+
+.cross {
+    color: #dc3545; 
+    font-weight: bold;
+}
+
+/* --- Botón (Restaurando Colores) --- */
+.plan-action {
+    padding: 15px 20px; 
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 15px; 
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    font-size: 0.9em; 
+}
+
+.btn.primary {
+    background-color: #007bff;
+    color: white !important;
+    border: none;
+}
+
+.btn.primary:hover {
+    background-color: #0056b3;
+}
+
+.btn.alt {
+    background-color: #6c757d;
+    color: white !important;
+    border: none;
+}
+
+.btn.alt:hover {
+    background-color: #5a6268;
+}
+
+/* --- Estilos para la Estructura de Pestañas (Minimalista con Subrayado) --- */
+.plan-tabs-header {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+    /* Ancho para que el texto "Personaliza tu plan" no salte de línea */
+    max-width: 650px; 
+    margin: 0 auto 30px auto; 
+    border: none;
+    border-radius: 0;
+    overflow: visible; 
+    border-bottom: 2px solid #ccc;
+}
+
+.plan-tabs-header .tab-button {
+    flex: 0 1 auto; 
+    padding: 0 20px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    line-height: 1;
+    color: #555; 
+    background-color: transparent; 
+    border: none;
+    position: relative; 
+    bottom: -2px;
+}
+
+.plan-tabs-header .tab-button h2 {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 10px 0; 
+    font-weight: 600;
+}
+
+.plan-tabs-header .tab-button.active {
+    color: #007bff;
+    background-color: transparent; 
+    font-weight: bold;
+}
+
+.plan-tabs-header .tab-button.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #007bff;
+}
+
+/* --- Estilos para el Slider Deslizable (Solución al Recorte y Espacio) --- */
+.plans-slider-container {
+    padding-top: 30px; 
+    overflow: hidden; 
+    width: 100%;
+    /* Solución definitiva para el espacio: altura automática */
+    height: auto; 
+}
+
+.plans-slider-track {
+    display: flex;
+    width: 200%;
+    transition: transform 0.5s ease-in-out; 
+    height: auto; 
+}
+
+.plans-slide-panel {
+    width: 50%;
+    flex-shrink: 0;
+    padding: 0;
+    height: auto; 
+    min-height: auto; 
+}
+
+.plans-container.single-card-container {
+    justify-content: center;
+    align-items: center;
+}
+.customize-card {
+    /* MODIFICADO: Cambiamos de 650px a 900px (o el valor que prefieras) */
+    max-width: 1000px !important; 
+    width: 90% !important; 
+    margin: 0 auto;
+    min-height: auto; 
+}
+
+.customize-card .plan-features li {
+    padding: 15px;
+}
+
+/* --- Estilos para los campos del formulario --- */
+.customize-card .form-group {
+    width: 100%;
+    padding: 10px 15px;
+}
+
+.customize-card label {
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.customize-card input[type="text"], 
+.customize-card input[type="email"], 
+.customize-card input[type="number"], 
+.customize-card textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #333;
+     background-color: white;
+}
+
+/* --- Estilos para Checkboxes Cuadrados en el Formulario Personalizado --- */
+/* Ocultar el checkbox nativo */
+.customize-card .plan-features input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Crear el cuadrado visual */
+.customize-card .plan-features label::before {
+    content: '';
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    margin-right: 15px;
+    vertical-align: middle; 
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.5s ease;
+}
+
+/* Estilo cuando el checkbox está CHECKED */
+.customize-card .plan-features input[type="checkbox"]:checked + label::before {
+    border-color: #28a745; 
+    background-color: #28a745;
+}
+
+/* Estilo del ícono de checkmark (el V) */
+.customize-card .plan-features input[type="checkbox"]:checked + label::after {
+    content: '\2713'; 
+    position: absolute;
+    left: 30px; 
+    top: 80%;
+    transform: translateY(-50%); 
+    font-size: 18px; 
+    color: white; 
+    font-weight: bold;
+}
+
+/* Aseguramos que la etiqueta pueda contener el pseudo-elemento */
+.customize-card .plan-features label {
+    position: relative;
+    padding-left: 45px; 
+    cursor: pointer;
+    line-height: 25px; 
+    margin-left: 0 !important; 
+}
+
+/* --- Media Queries para Responsividad --- */
+@media screen and (max-width: 980px) {
+    .plans-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plan-card {
+        width: 90%; 
+        margin-bottom: 25px;
+        min-height: auto; 
+    }
+    
+    .customize-card {
+        max-width: 90% !important;
+    }
+}
+
+/* Estilo para el contenedor de 2 columnas en el formulario de personalización */
+.form-two-column {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Asegura que las columnas se distribuyan uniformemente */
+.form-two-column .column-left,
+.form-two-column .column-right {
+    flex: 1; /* Ocupa el espacio disponible de manera igualitaria */
+    margin: 0 10px; /* Pequeño margen entre las columnas */
+}
+
+/* Media Query para móvil: apilar las columnas */
+@media screen and (max-width: 600px) {
+    .form-two-column {
+        flex-direction: column;
+    }
+    .form-two-column .column-left,
+    .form-two-column .column-right {
+        margin: 0;
+    }
+}

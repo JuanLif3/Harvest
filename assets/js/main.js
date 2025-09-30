@@ -81,3 +81,26 @@
 		}
 
 })(jQuery);
+
+function showTab(tabId) {
+            const track = document.getElementById('plans-slider-track');
+            
+            // 1. Cambia la posición del slider (transform)
+            if (tabId === 'planes') {
+                // Muestra la primera sección (Planes)
+                track.style.transform = 'translateX(0)';
+            } else if (tabId === 'personaliza') {
+                // Muestra la segunda sección (Personaliza)
+                track.style.transform = 'translateX(-50%)';
+            }
+
+            // 2. Maneja los botones activos/inactivos
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('inactive');
+            });
+
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.remove('inactive');
+            activeTab.classList.add('active');
+        }

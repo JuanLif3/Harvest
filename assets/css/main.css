@@ -150,7 +150,7 @@ input, select, textarea {
 		}
 
 	strong, b {
-		color: #fff;
+		color: #000000;
 		font-weight: 600;
 	}
 
@@ -3051,7 +3051,7 @@ input, select, textarea {
 		}
 
 		.wrapper.style3 {
-			background-color: #7c582a7c;
+			background-color: #7c582a00;
 			color: #d3d4e4;
 		}
 
