@@ -104,3 +104,15 @@ function showTab(tabId) {
             activeTab.classList.remove('inactive');
             activeTab.classList.add('active');
         }
+
+		document.addEventListener('DOMContentLoaded', function() {
+    // 1. Encuentra el elemento de video
+    const videoElement = document.querySelector('.video-background video');
+
+    if (videoElement) {
+        // 2. Ajusta la velocidad de reproducción (1.0 es velocidad normal)
+        // 0.5 = Mitad de velocidad (Más lento)
+        // 0.7 = 70% de velocidad
+        videoElement.playbackRate = 0.7; // Ajusta este valor al que desees
+    }
+});

@@ -1,0 +1,238 @@
+/* Contenedor principal del nuevo video */
+.video-section-system {
+    padding: 6em 0; /* Espacio superior e inferior */
+    background-color: #f7f7f700; /* Fondo suave */
+    width: 100%;
+    position: relative;
+}
+
+/* Contenedor interno */
+.inner-video-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center; /* Centra título y video */
+}
+
+/* Título del video */
+.video-title h2 {
+    font-size: 2em;
+    margin-bottom: 2em; /* Espacio entre título y video */
+    color: #51f54b;
+}
+
+/* Contenedor del video */
+.video-background-system {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: 60vh;
+    margin: 0 auto;
+    overflow: hidden;
+    border: none !important;
+    outline: none !important;
+    will-change: transform;
+}
+
+/* Video */
+.video-background-system video {
+    position: absolute;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%); /* Ajusta para centrar exactamente */
+    object-fit: cover;
+}
+
+/* Overlay (si quieres un filtro sobre el video) */
+.video-overlay-system {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* RESPONSIVO */
+@media screen and (max-width: 980px) {
+    .video-background-system {
+        width: 100%;
+        height: 50vh;
+    }
+    .video-title h2 {
+        font-size: 1.5em;
+        margin-bottom: 1.5em;
+    }
+}
+
+
+
+
+/* ==================================== */
+/* Sección de Imagen-Texto 1 */
+/* ==================================== */
+.image-text-section-1 {
+    padding: 6em 0; 
+    background-color: #ffffff;
+}
+
+.image-content-wrapper-1 {
+    display: flex;
+    flex-direction: row; 
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-column-1 {
+    width: 55%;
+    padding-left: 5%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.image-text-column-1 {
+    width: 40%;
+    text-align: left;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start;
+}
+
+.image-in-column-1 {
+    width: 100%;
+    height: 60vh;
+    position: relative; 
+    overflow: hidden; 
+    margin: 0 auto 0 0; 
+    
+    /* 1. SUAVE BORDE REDONDEADO */
+    border-radius: 8px; /* Redondea ligeramente las esquinas */
+    
+    /* 2. EFECTO DE SOMBRA/BRILLO (Box-Shadow) */
+    box-shadow: 
+        /* Sombra principal: ligera, difusa, para darle relieve */
+        0 10px 30px rgba(0, 0, 0, 0.25), 
+        /* Sombra interior/Brillo: Un sutil resplandor (puedes ajustar el color) */
+        0 0 15px rgba(118, 194, 76, 0.4); /* Color verde/azul claro para simular un brillo sutil */
+}
+.image-in-column-1 img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0%, -50%, 0); 
+    object-fit: cover; 
+    object-position: left center; 
+    z-index: 0;
+    
+    /* Aplica el mismo borde redondeado para evitar que sobresalga */
+    border-radius: 8px; 
+}
+
+.image-text-column-1 header.major {
+    text-align: left;
+    width: 100%;
+}
+
+/* ==================================== */
+/* SECCIÓN 2 - IMAGEN A LA DERECHA */
+.image-text-section2 {
+    padding: 6em 0; 
+    background-color: #ffffff; /* Fondo claro para esta sección */
+}
+
+.image-content-wrapper2 {
+    display: flex;
+    flex-direction: row; 
+    align-items: stretch; /* CLAVE: Ambas columnas se estiran a la misma altura */
+    max-width: 1200px; /* Ancho máximo del contenido (ajusta si es necesario) */
+    margin: 0 auto; 
+}
+
+/* Columna de Texto (izquierda) */
+.image-text-column2 {
+    width: 40%; /* 40% del ancho para el texto */
+    text-align: left;
+    
+    /* Centra el contenido de texto verticalmente */
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start;
+}
+.image-column2 {
+    width: 55%; /* 55% del ancho para la imagen */
+    padding-right: 5%; /* 5% de espacio entre imagen y texto */
+
+    flex-shrink: 0; 
+    /* Alinea el contenido a la izquierda */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.image-in-column2 {
+    width: 100%;
+    height: 60vh;
+    position: relative; 
+    
+    /* **************** MODIFICACIONES CLAVE **************** */
+    overflow: hidden; 
+    margin: 0 auto 0 0; 
+    
+    /* 1. SUAVE BORDE REDONDEADO */
+    border-radius: 8px; /* Redondea ligeramente las esquinas */
+    
+    /* 2. EFECTO DE SOMBRA/BRILLO (Box-Shadow) */
+    box-shadow: 
+        /* Sombra principal: ligera, difusa, para darle relieve */
+        0 10px 30px rgba(0, 0, 0, 0.25), 
+        /* Sombra interior: (Opcional) Un sutil resplandor verdoso/azul para el "brillo" tecnológico */
+        0 0 15px rgba(255, 255, 255, 0.4); /* Color verde/azul claro para simular un brillo sutil */
+        
+    /* ****************************************************** */
+}
+
+.image-in-column2 img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0%, -50%, 0);
+    object-fit: cover;
+    object-position: left center; 
+    z-index: 0;
+    
+    /* Esto es crucial para que la imagen no sobresalga del borde redondeado de su contenedor */
+    border-radius: 8px; 
+}
+
+/* Encabezados */
+.image-text-column2 header.major {
+    text-align: left;
+    width: 100%;
+}
+
+/* RESPONSIVO */
+@media screen and (max-width: 980px) {
+    .image-content-wrapper2 {
+        flex-direction: column;
+        padding: 0 3em;
+    }
+    .image-column2, .image-text-column2 {
+        width: 100%;
+        margin-bottom: 2em;
+        padding-right: 0;
+    }
+    .image-in-column2 {
+        height: 50vh;
+        margin-left: 0;
+    }
+}

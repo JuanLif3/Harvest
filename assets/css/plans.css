@@ -379,3 +379,24 @@
         margin: 0;
     }
 }
+
+#tab-content-planes h2 {
+    /* 1. Centrar el texto */
+    text-align: center;
+    
+    /* 2. Hacerlo más chico (por ejemplo, el tamaño de un h4 o h3 pequeño) */
+    font-size: 0.8em; 
+    
+    /* 3. Asegurar que haya un buen espacio arriba */
+    margin-top: 2em; 
+    
+    /* 4. Color para destacarlo (opcional) */
+    color: #6c757d; 
+}
+
+@media screen and (max-width: 600px) {
+    #tab-content-planes h2 {
+        font-size: 1em; /* Un poco más pequeño en móviles */
+        padding: 0 10px; /* Evitar que se pegue a los lados */
+    }
+}

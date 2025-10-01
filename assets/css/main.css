@@ -17,7 +17,7 @@ form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
-section, summary, time, mark, audio, video {
+section, summary, time, mark, audio {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -1845,9 +1845,7 @@ input, select, textarea {
 		font-size: 0.9em;
 	}
 
-	header.major {
-		margin: 0 0 3.5em 0;
-	}
+	
 
 		header.major h2, header.major h3, header.major h4, header.major h5, header.major h6 {
 			border-bottom: solid 2px #fff;
@@ -2606,128 +2604,114 @@ input, select, textarea {
 		}
 
 /* Features */
+/* 1. Contenedor de las Tarjetas */
+.features {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    
+    /* CAMBIO CLAVE 1: Eliminamos flex-wrap para intentar ponerlas todas en línea */
+    /* -moz-flex-wrap: wrap;  <-- ELIMINAR O COMENTAR */
+    /* -webkit-flex-wrap: wrap; <-- ELIMINAR O COMENTAR */
+    /* -ms-flex-wrap: wrap; <-- ELIMINAR O COMENTAR */
+    /* flex-wrap: wrap; <-- ELIMINAR O COMENTAR */
+    
+    -moz-justify-content: space-around; /* Cambiado a space-around para mejor espaciado */
+    -webkit-justify-content: space-around;
+    -ms-justify-content: space-around;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
 
-	.features {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		-moz-justify-content: center;
-		-webkit-justify-content: center;
-		-ms-justify-content: center;
-		justify-content: center;
-		list-style: none;
-		padding: 0;
-		width: 100%;
-	}
+/* 2. Estilo de Cada Tarjeta */
+.features li {
+    /* CAMBIO CLAVE 2: Reducir el ancho para que quepan 4 */
+    /* width: 50%; <-- ELIMINAR */
+    width: 22%; /* 22% x 4 = 88%. Deja 12% para márgenes/espaciado. */
+    
+    padding: 2.5em 1.5em; /* Padding ajustado para tarjetas más compactas */
+    display: block;
+    position: relative;
+    text-align: center; /* Centramos el texto dentro de la tarjeta */
+    
+    /* CAMBIO CLAVE 3: Añadimos margen para separarlas */
+    margin: 0 1% 2em 1%; /* Margen horizontal del 1% para separarlas */
+    
+    background-color: #fff; /* Fondo blanco para simular una tarjeta */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra para efecto tarjeta */
+    border-radius: 8px; /* Bordes redondeados */
+}
 
-		.features li {
-			padding: 4em 4em 2em 6em ;
-			display: block;
-			position: relative;
-			text-align: left;
-			width: 50%;
-		}
+/* 3. Colores de Fondo ORIGINALES (Adaptados y ajustados para las tarjetas) */
 
-			.features li:nth-child(1) {
-				background-color: rgba(0, 0, 0, 0.035);
-			}
+/* Si quieres que cada tarjeta tenga un color diferente, reemplaza los selectores nth-child: */
+.features li:nth-child(1) { background-color: rgba(0, 0, 0, 0.035); }
+.features li:nth-child(2) { background-color: rgba(0, 0, 0, 0.07); }
+.features li:nth-child(3) { background-color: rgba(0, 0, 0, 0.105); }
+.features li:nth-child(4) { background-color: rgba(0, 0, 0, 0.14); }
 
-			.features li:nth-child(2) {
-				background-color: rgba(0, 0, 0, 0.07);
-			}
+/* 4. Estilo del Icono (ajustado para centrado) */
+.features li:before {
+    display: block;
+    color: #00ff37b4;
+    position: relative; /* Cambiado a relative para que aparezca encima del texto */
+    left: 0;
+    top: 0;
+    margin: 0 auto 1em auto; /* Centrado horizontal del ícono */
+    font-size: 2em; /* Ícono un poco más grande */
+}
 
-			.features li:nth-child(3) {
-				background-color: rgba(0, 0, 0, 0.105);
-			}
+/* 5. ELIMINACIÓN DE REGLAS DE RADIO DE BORDE CONFLICTIVAS */
+/* Como ahora están todas en una fila, estas reglas no se necesitan y se reemplazan por border-radius general en .features li */
+/* .features li:nth-child(1) { border-top-left-radius: 3px; } <-- ELIMINAR */
+/* .features li:nth-child(2) { border-top-right-radius: 3px; } <-- ELIMINAR */
+/* .features li:nth-last-child(1) { border-bottom-right-radius: 3px; } <-- ELIMINAR */
+/* .features li:nth-last-child(2) { border-bottom-left-radius: 3px; } <-- ELIMINAR */
 
-			.features li:nth-child(4) {
-				background-color: rgba(0, 0, 0, 0.14);
-			}
+/* 6. Media Queries para Móviles */
 
-			.features li:nth-child(5) {
-				background-color: rgba(0, 0, 0, 0.175);
-			}
+/* A partir de 980px, las tarjetas deben volver a ocupar el 100% o 50% para verse bien */
+@media screen and (max-width: 980px) {
 
-			.features li:nth-child(6) {
-				background-color: rgba(0, 0, 0, 0.21);
-			}
+    .features {
+        /* Restaurar el wrap en móvil para que vuelvan a la disposición de 2x2 */
+        flex-wrap: wrap;
+    }
 
-			.features li:nth-child(7) {
-				background-color: rgba(0, 0, 0, 0.245);
-			}
+    .features li {
+        width: 45%; /* Volvemos a 2 tarjetas por fila */
+        margin: 0 2.5% 2em 2.5%;
+        padding: 3em 2em 1em 2em ;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .features li:before {
+        left: 0;
+        margin: 0 auto 1em auto;
+        position: relative;
+        top: 0;
+    }
+}
 
-			.features li:nth-child(8) {
-				background-color: rgba(0, 0, 0, 0.28);
-			}
+@media screen and (max-width: 736px) {
 
-			.features li:nth-child(9) {
-				background-color: rgba(0, 0, 0, 0.315);
-			}
-
-			.features li:nth-child(10) {
-				background-color: rgba(0, 0, 0, 0.35);
-			}
-
-			.features li:before {
-				display: block;
-				color: #00ff37b4;
-				position: absolute;
-				left: 1.75em;
-				top: 2.75em;
-				font-size: 1.5em;
-			}
-
-			.features li:nth-child(1) {
-				border-top-left-radius: 3px;
-			}
-
-			.features li:nth-child(2) {
-				border-top-right-radius: 3px;
-			}
-
-			.features li:nth-last-child(1) {
-				border-bottom-right-radius: 3px;
-			}
-
-			.features li:nth-last-child(2) {
-				border-bottom-left-radius: 3px;
-			}
-
-			@media screen and (max-width: 980px) {
-
-				.features li {
-					padding: 3em 2em 1em 2em ;
-					text-align: center;
-				}
-
-					.features li:before {
-						left: 0;
-						margin: 0 0 1em 0;
-						position: relative;
-						top: 0;
-					}
-
-			}
-
-			@media screen and (max-width: 736px) {
-
-				.features li {
-					padding: 3em 0 1em 0 ;
-					background-color: transparent !important;
-					border-top: solid 2px #fff;
-					width: 100%;
-				}
-
-					.features li:first-child {
-						border-top: 0;
-					}
-
-			}
+    .features li {
+        padding: 3em 0 1em 0 ;
+        background-color: transparent !important;
+        border-top: solid 2px #fff;
+        width: 100%; /* Una tarjeta por fila en móvil */
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    .features li:first-child {
+        border-top: 0;
+    }
+}
 
 /* Spotlight */
 
@@ -3052,7 +3036,7 @@ input, select, textarea {
 
 		.wrapper.style3 {
 			background-color: #7c582a00;
-			color: #d3d4e4;
+			color: #ffffff;
 		}
 
 			.wrapper.style3 strong, .wrapper.style3 b {
@@ -3060,7 +3044,7 @@ input, select, textarea {
 			}
 
 			.wrapper.style3 h2, .wrapper.style3 h3, .wrapper.style3 h4, .wrapper.style3 h5, .wrapper.style3 h6 {
-				color: #ffffff;
+				color: #51f54b;
 			}
 
 			.wrapper.style3 hr {
@@ -3076,7 +3060,7 @@ input, select, textarea {
 			}
 
 			.wrapper.style3 header p {
-				color: #b9bad4;
+				color: #ffffff;
 			}
 
 			.wrapper.style3 header.major h2, .wrapper.style3 header.major h3, .wrapper.style3 header.major h4, .wrapper.style3 header.major h5, .wrapper.style3 header.major h6 {
@@ -3084,7 +3068,7 @@ input, select, textarea {
 			}
 
 			.wrapper.style3 header.major p {
-				color: #d3d4e4;
+				color: #ffffff;
 			}
 
 			.wrapper.style3 label {
@@ -3110,7 +3094,7 @@ input, select, textarea {
 
 			.wrapper.style3 input[type="checkbox"] + label,
 			.wrapper.style3 input[type="radio"] + label {
-				color: #d3d4e4;
+				color: #ffffff;
 			}
 
 				.wrapper.style3 input[type="checkbox"] + label:before,

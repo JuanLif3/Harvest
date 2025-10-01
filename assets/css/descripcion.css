@@ -1,0 +1,151 @@
+/* ==================================== */
+/* ESTILOS DEL SHOWCASE DE MÉTRICAS (7 RECUADROS) - ADAPTADO AL ESTILO OSCURO */
+/* ==================================== */
+
+.metrics-section {
+    padding: 6em 0; /* Un poco más de padding superior/inferior */
+    background-color: #33333379; /* Fondo oscuro similar al ejemplo */
+}
+
+/* 1. Contenedor Grid/Flexbox para los 7 recuadros */
+.metrics-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; /* Aumentamos el espacio entre los recuadros */
+    margin-top: 3em;
+    max-width: 1200px; /* Asegura que la grilla no se extienda demasiado */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Estilo base de cada recuadro (Card) */
+.metric-card {
+    background: #44444460; /* Fondo más oscuro para cada tarjeta */
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    padding: 35px 25px; /* Más padding interno para el contenido */
+    
+    /* El ancho es clave para acomodar 7 recuadros (3 por fila, dejando espacio al final) */
+    width: calc( (100% / 3) - 40px ); /* Ajuste el ancho para 3 columnas y el nuevo gap */
+    min-height: 220px; /* Aumentar ligeramente la altura mínima para mejor aspecto */
+    text-align: center;
+    
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.041); /* Sombra más pronunciada */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    position: relative;
+    display: flex; /* Usamos flex para centrar el contenido verticalmente */
+    flex-direction: column;
+    justify-content: flex-start; /* Alinear el contenido al inicio de la tarjeta */
+    align-items: center;
+}
+
+.metric-card:hover {
+    transform: translateY(-8px); /* Efecto 3D más pronunciado al pasar el mouse */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.144);
+    background-color: #55555517; /* Ligeramente más claro al pasar el mouse */
+}
+
+/* 3. Estilos de Tipografía y Contenido */
+.metric-card h3 {
+    font-size: 1.5em; /* Título más grande */
+    color: #ffffff; /* Texto blanco */
+    margin-top: 0.8em; /* Espacio después del ícono */
+    margin-bottom: 0.6em; /* Espacio antes del párrafo */
+    font-weight: 700; /* Negrita */
+    line-height: 1.2;
+    text-transform: uppercase; /* MAYÚSCULAS como en el ejemplo */
+}
+
+.metric-card p {
+    font-size: 1em; /* Tamaño de texto de párrafo */
+    color: #cccccc; /* Texto gris claro */
+    line-height: 1.5; /* Interlineado cómodo */
+    margin-bottom: 0;
+}
+
+/* 4. Estilos de Íconos */
+.metric-card .icon {
+    font-size: 3em; /* Íconos más grandes */
+    color: #76c24c; /* Color verde temático de HarvestMind */
+    margin-bottom: 0.5em; /* Espacio entre ícono y título */
+    display: block; 
+}
+
+.metric-card.hidden {
+    opacity: 0;
+    /* Evita que se aplique la animación hasta que JavaScript añada la clase 'reveal' */
+    /* Mantén el 'transform: translateY(0);' para que el layout no salte antes de la animación */
+    transform: translateY(0); 
+    /* Quitamos la propiedad 'transition' */
+}
+
+.metric-card.reveal {
+    opacity: 1;
+    /* Aplica la animación 'fadeInUp' */
+    /* Duración: 1.2 segundos (más lento) | Curva: ease-out | Modo: forwards (mantiene el estado final) */
+    animation: fadeInUp 0.7s ease-out forwards;
+}
+/* Aplicamos retrasos (delays) más largos para el efecto escalonado */
+.metrics-grid .metric-card:nth-child(1) { animation-delay: 0.2s; }
+.metrics-grid .metric-card:nth-child(2) { animation-delay: 0.4s; }
+.metrics-grid .metric-card:nth-child(3) { animation-delay: 0.6s; }
+.metrics-grid .metric-card:nth-child(4) { animation-delay: 0.8s; }
+.metrics-grid .metric-card:nth-child(5) { animation-delay: 1.0s; }
+.metrics-grid .metric-card:nth-child(6) { animation-delay: 1.2s; }
+.metrics-grid .metric-card:nth-child(7) { animation-delay: 1.4s; }
+
+/* Colores de Fondo / Ícono Temáticos (Opcional, puedes mantener los específicos o usar el color principal) */
+/* Si deseas íconos con colores variados, mantén estas reglas y ajusta los colores */
+.card-clima .icon { color: #f9d71c; } 
+.card-aire .icon { color: #a0c4ff; } 
+.card-agua .icon { color: #1e88e5; } 
+.card-suelo .icon { color: #8d6e63; } 
+.card-clorofila .icon { color: #50b848; } 
+.card-manchas .icon { color: #ff5722; } 
+.card-ph .icon { color: #9c27b0; } 
+
+
+/* Define la animación que se aplicará al aparecer */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        /* Se mueve más hacia abajo para un ascenso más notable */
+        transform: translateY(60px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 6. Diseño Responsivo (Ajustado para el nuevo gap) */
+@media screen and (max-width: 1200px) {
+    .metric-card {
+        width: calc( (100% / 3) - 30px ); /* 3 columnas con el gap */
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .metrics-grid {
+        gap: 25px; /* Gap ligeramente menor en tablets */
+    }
+    .metric-card {
+        width: calc( (100% / 2) - 25px ); /* 2 columnas en tablets */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .metrics-grid {
+        gap: 20px;
+    }
+    .metric-card {
+        width: 100%; /* 1 columna en móviles */
+        padding: 30px 20px;
+    }
+    .metric-card h3 {
+        font-size: 1.3em;
+    }
+    .metric-card .icon {
+        font-size: 2.5em;
+    }
+}
