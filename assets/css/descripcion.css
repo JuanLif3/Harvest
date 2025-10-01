@@ -1,151 +1,235 @@
 /* ==================================== */
-/* ESTILOS DEL SHOWCASE DE MÉTRICAS (7 RECUADROS) - ADAPTADO AL ESTILO OSCURO */
+/* ESTILOS PARA LA GRILLA ORGÁNICA (PRECISO) */
 /* ==================================== */
 
-.metrics-section {
-    padding: 6em 0; /* Un poco más de padding superior/inferior */
-    background-color: #33333379; /* Fondo oscuro similar al ejemplo */
+.organic-navigation-section {
+    /* REMOVE BACKGROUND */
+    background-color: transparent;
+    background-image: none;
+    /* FIN REMOVE BACKGROUND */
+
+    /* AJUSTE: Quitamos el 'display: flex' de la sección principal */
+    /* Lo usamos solo para el 'organic-grid' si es necesario, o lo centramos con 'margin: auto' */
+    /* Ahora centramos el contenido del grid y el título */
+    padding: 0px 20px;
+    min-height: 600px;
+    overflow: hidden;
+    position: relative;
+    text-align: center; /* Centra el texto del header */
 }
 
-/* 1. Contenedor Grid/Flexbox para los 7 recuadros */
-.metrics-grid {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 30px; /* Aumentamos el espacio entre los recuadros */
-    margin-top: 3em;
-    max-width: 1200px; /* Asegura que la grilla no se extienda demasiado */
-    margin-left: auto;
+.section-header {
+    margin-bottom: 40px; /* Espacio entre el título y las burbujas */
+    max-width: 900px; /* Alineamos el ancho con el organic-grid */
+    margin-left: auto; /* Centrar el header */
+    margin-right: auto;
+    width: 100%;
+}
+
+.section-header h1 {
+    font-size: 2em; /* Tamaño visible */
+    font-weight: 700;
+    color: #42be53; /* Color oscuro para contraste con el fondo claro */
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.organic-grid {
+    position: relative;
+    width: 900px; 
+    height: 500px;
+    margin-left: auto; /* Centrar el grid */
     margin-right: auto;
 }
 
-/* 2. Estilo base de cada recuadro (Card) */
-.metric-card {
-    background: #44444460; /* Fondo más oscuro para cada tarjeta */
-    border-radius: 8px; /* Bordes ligeramente redondeados */
-    padding: 35px 25px; /* Más padding interno para el contenido */
-    
-    /* El ancho es clave para acomodar 7 recuadros (3 por fila, dejando espacio al final) */
-    width: calc( (100% / 3) - 40px ); /* Ajuste el ancho para 3 columnas y el nuevo gap */
-    min-height: 220px; /* Aumentar ligeramente la altura mínima para mejor aspecto */
+/* Estilo Base de cada "Burbuja" */
+.metric-bubble {
+    color: white;
     text-align: center;
+    padding: 20px 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.041); /* Sombra más pronunciada */
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-    position: relative;
-    display: flex; /* Usamos flex para centrar el contenido verticalmente */
-    flex-direction: column;
-    justify-content: flex-start; /* Alinear el contenido al inicio de la tarjeta */
+    /* Mantenemos el hover separado de la transición de animación */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
+    
+    display: flex;
+    justify-content: center;
     align-items: center;
+    position: absolute;
+    font-size: 0.9em;
+    line-height: 1.1;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+    /* AÑADIR: Estado inicial de la animación (opacidad 0) */
+    opacity: 0; 
 }
 
-.metric-card:hover {
-    transform: translateY(-8px); /* Efecto 3D más pronunciado al pasar el mouse */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.144);
-    background-color: #55555517; /* Ligeramente más claro al pasar el mouse */
+.metric-bubble:hover {
+    transform: translateY(-5px); /* Efecto hover suave */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 3. Estilos de Tipografía y Contenido */
-.metric-card h3 {
-    font-size: 1.5em; /* Título más grande */
-    color: #ffffff; /* Texto blanco */
-    margin-top: 0.8em; /* Espacio después del ícono */
-    margin-bottom: 0.6em; /* Espacio antes del párrafo */
-    font-weight: 700; /* Negrita */
-    line-height: 1.2;
-    text-transform: uppercase; /* MAYÚSCULAS como en el ejemplo */
+.metric-bubble h3 {
+    font-size: 1em; /* Ajuste específico para el h3 dentro */
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    /* Aseguramos que el texto no se rompa de forma extraña */
+    white-space: normal; /* Permite que el texto se ajuste en varias líneas */
 }
 
-.metric-card p {
-    font-size: 1em; /* Tamaño de texto de párrafo */
-    color: #cccccc; /* Texto gris claro */
-    line-height: 1.5; /* Interlineado cómodo */
-    margin-bottom: 0;
+/* COLORES */
+.clima { background-color: #4eb94e; } /* Verde claro */
+.aire { background-color: #4bc44b; } /* Turquesa */
+.precipitacion { background-color: #4aaf4a; } /* Azul claro */
+.suelo { background-color: #358b35; } /* Verde claro, como en la imagen para "Condiciones del Suelo" */
+.clorofila { background-color: #358b35; } /* Morado */
+.manchas { background-color: #307530; } /* Amarillo */
+.ph { background-color: #2c6d2c; } /* Turquesa */
+
+/* TAMAÑOS, FORMAS Y POSICIONES INDIVIDUALES (¡Precisión a la imagen!) */
+
+/* 1. Condiciones Climáticas */
+.bubble-1.clima {
+    width: 220px; height: 100px;
+    border-radius: 25px;
+    top: 50px; left: 250px;
+    z-index: 1; /* Asegura que esté encima de las burbujas inferiores */
+    transform: rotate(deg); /* Ligera inclinación */
 }
 
-/* 4. Estilos de Íconos */
-.metric-card .icon {
-    font-size: 3em; /* Íconos más grandes */
-    color: #76c24c; /* Color verde temático de HarvestMind */
-    margin-bottom: 0.5em; /* Espacio entre ícono y título */
-    display: block; 
+/* 2. Calidad del Aire */
+.bubble-2.aire {
+    width: 180px; height: 80px;
+    border-radius: 25px;
+    top: 70px; left: 480px;
+    z-index: 4;
 }
 
-.metric-card.hidden {
-    opacity: 0;
-    /* Evita que se aplique la animación hasta que JavaScript añada la clase 'reveal' */
-    /* Mantén el 'transform: translateY(0);' para que el layout no salte antes de la animación */
-    transform: translateY(0); 
-    /* Quitamos la propiedad 'transition' */
+/* 3. Precipitación Diaria */
+.bubble-3.precipitacion {
+    width: 200px; height: 100px;
+    border-radius: 25px;
+    top: 160px; left: 560px;
+    z-index: 3;
+    transform: rotate(deg);
 }
 
-.metric-card.reveal {
-    opacity: 1;
-    /* Aplica la animación 'fadeInUp' */
-    /* Duración: 1.2 segundos (más lento) | Curva: ease-out | Modo: forwards (mantiene el estado final) */
-    animation: fadeInUp 0.7s ease-out forwards;
+/* 4. Condiciones del Suelo */
+.bubble-4.suelo {
+    width: 220px; height: 100px;
+    border-radius: 25px; /* Ajuste a la forma "pastilla" */
+    top: 160px; left: 330px;
+    z-index: 4; /* Sobre Precipitación */
 }
-/* Aplicamos retrasos (delays) más largos para el efecto escalonado */
-.metrics-grid .metric-card:nth-child(1) { animation-delay: 0.2s; }
-.metrics-grid .metric-card:nth-child(2) { animation-delay: 0.4s; }
-.metrics-grid .metric-card:nth-child(3) { animation-delay: 0.6s; }
-.metrics-grid .metric-card:nth-child(4) { animation-delay: 0.8s; }
-.metrics-grid .metric-card:nth-child(5) { animation-delay: 1.0s; }
-.metrics-grid .metric-card:nth-child(6) { animation-delay: 1.2s; }
-.metrics-grid .metric-card:nth-child(7) { animation-delay: 1.4s; }
 
-/* Colores de Fondo / Ícono Temáticos (Opcional, puedes mantener los específicos o usar el color principal) */
-/* Si deseas íconos con colores variados, mantén estas reglas y ajusta los colores */
-.card-clima .icon { color: #f9d71c; } 
-.card-aire .icon { color: #a0c4ff; } 
-.card-agua .icon { color: #1e88e5; } 
-.card-suelo .icon { color: #8d6e63; } 
-.card-clorofila .icon { color: #50b848; } 
-.card-manchas .icon { color: #ff5722; } 
-.card-ph .icon { color: #9c27b0; } 
+/* 5. Índice de Clorofila */
+.bubble-5.clorofila {
+    width: 200px; height: 100px;
+    border-radius: 25px;
+    top: 160px; left: 120px;
+    z-index: 5;
+    transform: rotate(deg);
+}
+
+/* 6. Índice de Manchas */
+.bubble-6.manchas {
+    width: 200px; height: 80px;
+    border-radius: 25px;
+    top: 270px; left: 170px;
+    z-index: 4;
+}
+
+/* 7. pH del Suelo */
+.bubble-7.ph {
+    width: 200px; height: 100px;
+    border-radius: 25px;
+    top: 270px; left: 380px;
+    z-index: 5; /* Sobre Índice de Manchas */
+    transform: rotate(deg);
+}
 
 
-/* Define la animación que se aplicará al aparecer */
-@keyframes fadeInUp {
-    from {
+/* Media Query para Responsividad */
+@media (max-width: 950px) {
+    .organic-navigation-section {
+        min-height: auto; /* Dejar que la altura se ajuste al contenido */
+        padding: 40px 10px;
+    }
+    .organic-grid {
+        width: 100%;
+        height: auto; /* Altura se ajusta */
+        display: flex;
+        flex-direction: column; /* Una columna */
+        align-items: center; /* Centrar las burbujas */
+    }
+    .metric-bubble {
+        position: relative; /* En móviles, se posicionan normalmente */
+        width: calc(90% - 20px); /* Un poco menos del 100% para padding */
+        height: 80px; /* Altura consistente */
+        margin: 10px 0; /* Espacio entre ellas */
+        transform: none !important; /* Quitar rotaciones y transladaciones */
+        border-radius: 20px !important; /* Borde uniforme */
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 600px) {
+    .metric-bubble {
+        width: calc(100% - 20px); /* Ocupar casi todo el ancho */
+        font-size: 1em;
+        padding: 15px 20px;
+    }
+}
+
+/* 1. Definición de la Animación Keyframe */
+@keyframes bubble-pop-in {
+    0% {
         opacity: 0;
-        /* Se mueve más hacia abajo para un ascenso más notable */
-        transform: translateY(60px); 
+        /* Moverse hacia arriba y rotar al inicio */
+        transform: translateY(50px) scale(0.5) rotate(10deg); 
     }
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        /* Volver a su posición final (la que ya definiste) */
+        transform: translateY(0) scale(1) rotate(0deg); 
     }
 }
 
-/* 6. Diseño Responsivo (Ajustado para el nuevo gap) */
-@media screen and (max-width: 1200px) {
-    .metric-card {
-        width: calc( (100% / 3) - 30px ); /* 3 columnas con el gap */
-    }
+/* 2. Clase de estado inicial (Por defecto) */
+/* Todos los recuadros deben tener esta clase en el HTML al inicio */
+.metric-bubble {
+    /* ... (Estilos existentes) ... */
+    
+    /* ESTADO INICIAL: Invisible y pequeño, listo para la animación */
+    opacity: 0; 
+    transform: translateY(50px) scale(0.5); 
+    
+    /* Aseguramos que la transición de posición y tamaño no se active con el scroll
+       hasta que la animación finalice. Usamos una transición más lenta solo para la animación. */
+    transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s ease-out; /* Mantenemos la transición de hover */
 }
 
-@media screen and (max-width: 980px) {
-    .metrics-grid {
-        gap: 25px; /* Gap ligeramente menor en tablets */
-    }
-    .metric-card {
-        width: calc( (100% / 2) - 25px ); /* 2 columnas en tablets */
-    }
+
+/* 3. Clase que activa la animación (Añadida por JavaScript) */
+/* Cuando JavaScript detecte que la sección es visible, añade esta clase */
+/* 3. Clase que activa la animación (Añadida por JavaScript) */
+.metric-bubble.is-visible {
+    /* Aquí solo aplicamos la animación, el CSS hace el resto */
+    animation-name: bubble-pop-in;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; 
 }
 
-@media screen and (max-width: 600px) {
-    .metrics-grid {
-        gap: 20px;
-    }
-    .metric-card {
-        width: 100%; /* 1 columna en móviles */
-        padding: 30px 20px;
-    }
-    .metric-card h3 {
-        font-size: 1.3em;
-    }
-    .metric-card .icon {
-        font-size: 2.5em;
-    }
-}
+/* 4. Aplicar Retrasos Escalonados */
+/* Esto hace que las burbujas aparezcan una tras otra, creando un efecto más dinámico */
+.organic-grid .metric-bubble:nth-child(1).is-visible { animation-delay: 0.1s; }
+.organic-grid .metric-bubble:nth-child(2).is-visible { animation-delay: 0.2s; }
+.organic-grid .metric-bubble:nth-child(3).is-visible { animation-delay: 0.3s; }
+.organic-grid .metric-bubble:nth-child(4).is-visible { animation-delay: 0.4s; }
+.organic-grid .metric-bubble:nth-child(5).is-visible { animation-delay: 0.5s; }
+.organic-grid .metric-bubble:nth-child(6).is-visible { animation-delay: 0.6s; }
+.organic-grid .metric-bubble:nth-child(7).is-visible { animation-delay: 0.7s; }

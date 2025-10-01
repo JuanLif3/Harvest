@@ -2645,6 +2645,23 @@ input, select, textarea {
     border-radius: 8px; /* Bordes redondeados */
 }
 
+.features li ul {
+    /* Muestra la viñeta de guion (-) y quita cualquier margen superior */
+    list-style-type: ""; 
+    margin-top: 0.6em; 
+    margin-bottom: 0;
+    padding-left: 1px; /* Da espacio para que se vea la viñeta */
+    text-align: left; /* Alinea el texto a la izquierda para mejor lectura */
+    font-size: 0.9em; /* Puedes ajustar el tamaño si se ve muy grande */
+}
+
+.features li ul li {
+    /* Quita el 25% de ancho del <li> padre para que el texto fluya normalmente */
+    width: auto; 
+    /* Ajusta el espaciado interno si es necesario */
+    padding: 0.1em 0; 
+}
+
 /* 3. Colores de Fondo ORIGINALES (Adaptados y ajustados para las tarjetas) */
 
 /* Si quieres que cada tarjeta tenga un color diferente, reemplaza los selectores nth-child: */
@@ -2682,12 +2699,22 @@ input, select, textarea {
     }
 
     .features li {
-        width: 45%; /* Volvemos a 2 tarjetas por fila */
-        margin: 0 2.5% 2em 2.5%;
-        padding: 3em 2em 1em 2em ;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+    /* Clave: Cada uno ocupa exactamente el 25% del ancho total */
+    width: 25%; 
+    
+    /* Box Sizing: Vital para que el padding y border no aumenten el ancho */
+    box-sizing: border-box; 
+    
+    /* Añadir espacio interno para que el contenido no toque los bordes (opcional) */
+    padding: 1.5em 1em; 
+    
+    /* Asegurar que el texto se mantenga centrado */
+    text-align: center;
+    
+    /* Sobrescribir cualquier margen horizontal que pueda reducir el ancho */
+    margin-left: 0;
+    margin-right: 0;
+}
     
     .features li:before {
         left: 0;
@@ -2843,7 +2870,7 @@ input, select, textarea {
 /* Wrapper */
 
 	.wrapper {
-		padding: 6em 0 4em 0 ;
+		padding: 2em 0 4em 0 ;
 	}
 
 		.wrapper > .inner {
@@ -4028,3 +4055,5 @@ input, select, textarea {
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
 	}
+
+

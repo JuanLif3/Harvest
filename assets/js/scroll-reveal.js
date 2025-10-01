@@ -35,3 +35,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // Opcional: Escucha el evento de redimensionamiento
     window.addEventListener('resize', revealElements);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona todos los recuadros que queremos animar
+    const bubbles = document.querySelectorAll('.metric-bubble');
+
+    // Opciones del observador
+    const observerOptions = {
+        root: null, // Observa dentro del viewport
+        rootMargin: '0px',
+        threshold: 0.2 // Se dispara cuando el 20% del elemento es visible
+    };
+
+    // Función que se ejecuta cuando el elemento entra o sale del viewport
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            // Si el elemento está visible (intersecting)
+            if (entry.isIntersecting) {
+                // Añade la clase que activa el CSS de animación
+                entry.target.classList.add('is-visible');
+                // Deja de observar el elemento una vez que ha aparecido
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    // Crea la instancia del observador
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observa cada burbuja
+    bubbles.forEach(bubble => {
+        observer.observe(bubble);
+    });
+});
